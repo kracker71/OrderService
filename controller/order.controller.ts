@@ -89,6 +89,22 @@ const OrderController = {
             })
         }
     },
+
+    async getOrderByCheckInId(req:Request,res:Response,next:any){
+        try{
+            const {id_checkin} = req.params
+            const orders = await OrderService.getAllOrder({id_checkin:id_checkin})
+            return res.status(200).send({
+                status:"success",
+                data:orders
+            })
+        }catch(error){
+            return res.status(500).send({
+                status:"error",
+                message:"Internal Server Error"
+            })
+        }
+    }
 }
 
 export default OrderController

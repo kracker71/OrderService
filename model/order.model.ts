@@ -1,5 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column,CreateDateColumn,UpdateDateColumn } from "typeorm";
 
+export enum OrderStatus {
+    PENDING = "pending",
+    COOKING = "cooking",
+    DONE = "done"
+}
+
 @Entity()
 export class Order {
     @PrimaryGeneratedColumn()
@@ -28,6 +34,13 @@ export class Order {
 
     @Column("bool")
     is_paid:boolean = false
+
+    @Column({
+        type:"enum",
+        enum: OrderStatus,
+        default: OrderStatus.PENDING
+    })
+    status: OrderStatus
 
     @CreateDateColumn()
     createAt: Date
