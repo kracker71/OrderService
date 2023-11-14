@@ -20,8 +20,8 @@ export class Order {
     @Column('int')
     id_checkin: number
 
-    @Column('int')
-    id_table : number
+    @Column('varchar')
+    id_table : string
 
     @Column('int')
     amount : number
