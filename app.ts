@@ -57,9 +57,12 @@ app.use(
 	)
 );
 
+import OrderRouter from "./router/order.router"
 
-app.get("/", (req, res) => {
+app.get("/", (req, res,next) => {
 	res.send("Welcome to Order Service");
 });
+
+app.use("/order",OrderRouter)
 
 export default app
